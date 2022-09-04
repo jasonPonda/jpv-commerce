@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 import commerce from "../../lib/commerce";
 
@@ -31,8 +32,11 @@ export async function getStaticPaths() {
 export default function ProductPage({ product }) {
     return (
         <React.Fragment>
-            <h1>{product.name}</h1>
+            <div key={product.id}>
+            <Image src={product.media} alt={product.name} />
+            <p>{product.name}</p>
             <p>{product.price.formatted_with_symbol}</p>
+            </div>
         </React.Fragment>
     )
 }
